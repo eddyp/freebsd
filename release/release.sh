@@ -41,9 +41,9 @@ export PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin"
 VERSION=2
 
 # Prototypes that can be redefined per-chroot or per-target.
-load_chroot_env() { }
-load_target_env() { }
-buildenv_setup() { }
+load_chroot_env() {}
+load_target_env() {}
+buildenv_setup() {}
 
 usage() {
 	echo "Usage: $0 [-c release.conf]"
