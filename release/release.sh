@@ -87,10 +87,15 @@ env_setup() {
 	MAKE_CONF="/dev/null"
 	SRC_CONF="/dev/null"
 
-	# The number of make(1) jobs, defaults to the number of CPUs available
-	# for buildworld, and half of number of CPUs available for buildkernel.
-	WORLD_FLAGS="-j$(sysctl -n hw.ncpu)"
-	KERNEL_FLAGS="-j$(( $(( $(sysctl -n hw.ncpu) + 1 )) / 2))"
+	if [ "$(uname -s)" = "Linux" ]; then
+		WORLD_FLAGS="-j$(nproc)"
+		KERNEL_FLAGS="-j$(expr $(expr $(nproc) + 1 ) / 2)"
+	else
+		# The number of make(1) jobs, defaults to the number of CPUs available
+		# for buildworld, and half of number of CPUs available for buildkernel.
+		WORLD_FLAGS="-j$(sysctl -n hw.ncpu)"
+		KERNEL_FLAGS="-j$(( $(( $(sysctl -n hw.ncpu) + 1 )) / 2))"
+	fi
 
 	MAKE_FLAGS="-s"
 
