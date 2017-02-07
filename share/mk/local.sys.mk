@@ -1,10 +1,10 @@
 # $FreeBSD$
 
-.if ${MK_DIRDEPS_BUILD} == "yes" || ${MK_META_MODE} == "yes"
+.if "yes" == ${MK_DIRDEPS_BUILD} || "yes" == ${MK_META_MODE}
 
 # Not in the below list as it may make sense for non-meta mode
 # eventually.  meta.sys.mk (DIRDEPS_BUILD) also already adds these in.
-.if ${MK_DIRDEPS_BUILD} == "no" && ${MK_META_MODE} == "yes"
+.if "no" == ${MK_DIRDEPS_BUILD} && "yes" == ${MK_META_MODE}
 MAKE_PRINT_VAR_ON_ERROR += \
 	.ERROR_TARGET \
 	.ERROR_META_FILE \
@@ -48,14 +48,14 @@ _PREMK_LIBDIR:=	${LIBDIR}
 
 .include "src.sys.mk"
 
-.if ${.MAKE.MODE:Mmeta*} != ""
+.if "" != ${.MAKE.MODE:Mmeta*}
 # we can afford to use cookies to prevent some targets
 # re-running needlessly but only when using filemon.
 # Targets that should support the meta mode cookie handling should just be
 # added to META_TARGETS.  If bsd.sys.mk cannot be included then ${META_DEPS}
 # should be added as a target dependency as well.  Otherwise the target
 # is added to in bsd.sys.mk since it comes last.
-.if ${.MAKE.MODE:Mnofilemon} == ""
+.if "" == ${.MAKE.MODE:Mnofilemon}
 # Prepend .OBJDIR if not already there.
 _META_COOKIE_COND=	"${.TARGET:M${.OBJDIR}/*}" == ""
 _META_COOKIE_DEFAULT=	${${_META_COOKIE_COND}:?${.OBJDIR}/${.TARGET}:${.TARGET}}
