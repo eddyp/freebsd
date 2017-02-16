@@ -519,7 +519,7 @@ initdefaults()
 
 	# Set defaults.
 	#
-	toolprefix=nb
+	toolprefix=b
 
 	# Some systems have a small ARG_MAX.  -X prevents make(1) from
 	# exporting variables in the environment redundantly.
