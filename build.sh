@@ -1625,7 +1625,7 @@ LDFLAGS="${HOST_LDFLAGS}" \
 	    ${HOST_SH} "${TOP}/tools/make/configure" ||
 	( cp ${tmpdir}/config.log ${tmpdir}-config.log
 	      bomb "Configure of ${toolprefix}make failed, see ${tmpdir}-config.log for details" )
-	${runcmd} ${HOST_SH} buildmake.sh ||
+	${runcmd} ${HOST_SH} make-bootstrap.sh ||
 	    bomb "Build of ${toolprefix}make failed"
 	make="${tmpdir}/${toolprefix}make"
 	${runcmd} cd "${TOP}"
