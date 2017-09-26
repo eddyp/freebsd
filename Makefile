@@ -547,7 +547,12 @@ universe_${target}_done:
 .endfor
 universe_kernels: universe_kernconfs .PHONY
 .if !defined(TARGET)
-TARGET!=	uname -m
+UNAME_M!=	uname -m
+.if ${UNAME_M} == x86_64
+TARGET:=	amd64
+.else
+TARGET:=	${UNAME_M}
+.endif
 .endif
 .if defined(MAKE_ALL_KERNELS)
 _THINNER=cat
