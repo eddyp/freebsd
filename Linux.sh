@@ -13,8 +13,9 @@ fi
 #export HOST_MACHINE=$(uname -m)
 #MACHINE_CPUARCH=$(uname -p)
 export HOST_MACHINE_ARCH=$MACHINE_CPUARCH
+#export MAKEFLAGS="${MAKEFLAGS} -m share/mk"
 export MAKEFLAGS="${MAKEFLAGS} -m ${HOSTDIR}/share/mk"
-export MAKEFLAGS="${MAKEFLAGS} -m share/mk"
+export MAKEFLAGS="${MAKEFLAGS} -m ${FBSDROOT}/share/mk"
 #export MAKEFLAGS="${MAKEFLAGS} -dmlxVtMA"
 export COMPILER_TYPE=gcc
 export SHELL=/usr/bin/tcsh
