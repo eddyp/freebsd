@@ -1,6 +1,5 @@
 export FBSDROOT=$(pwd)
 export HOSTDIR=${FBSDROOT}/linuxhd
-
 export HOSTBIN=${HOSTDIR}/bin
 export LINUXWRAPPERSDIR=$FBSDROOT/tools/linux-wrappers
 
