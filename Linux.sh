@@ -19,3 +19,4 @@ export MAKEFLAGS="${MAKEFLAGS} -m ${FBSDROOT}/share/mk"
 #export MAKEFLAGS="${MAKEFLAGS} -dmlxVtMA"
 export COMPILER_TYPE=gcc
 export SHELL=/usr/bin/tcsh
+export MAKEOBJDIRPREFIX=${FBSDROOT}/obj
