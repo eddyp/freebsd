@@ -1,3 +1,4 @@
+set -x
 export FBSDROOT=$(pwd)
 export HOSTDIR=${FBSDROOT}/linuxhd
 export HOSTBIN=${HOSTDIR}/bin
@@ -19,3 +20,5 @@ export MAKEFLAGS="${MAKEFLAGS} -m ${FBSDROOT}/share/mk"
 export COMPILER_TYPE=gcc
 export SHELL=/usr/bin/tcsh
 export MAKEOBJDIRPREFIX=${FBSDROOT}/obj
+
+set +x
