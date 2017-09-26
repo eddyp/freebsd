@@ -198,7 +198,7 @@ get_optarg() {
 here=`'pwd'`
 if [ $here = $Mydir ]; then
    # avoid pollution
-   OBJROOT=../
+   OBJROOT=../../obj/bmake/
 fi
 
 op=all
