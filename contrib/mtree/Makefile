@@ -18,4 +18,11 @@ LIBADD+=util
 CPPFLAGS+=	-I${NETBSDSRCDIR}/sbin/mknod
 .PATH:		${NETBSDSRCDIR}/sbin/mknod
 
+# cross OS compiling
+.if ${OS} != "FreeBSD"
+CFLAGS+=	-I${NETBSDSRCDIR}/contrib/binutils/include
+# pack_dev.c is not found when cross compiling from a Linux host
+.PATH:		${NETBSDSRCDIR}/contrib/mknod
+.endif
+
 .include <bsd.prog.mk>
