@@ -204,6 +204,11 @@ NLSGRP?=	${SHAREGRP}
 NLSMODE?=	${NOBINMODE}
 
 INCLUDEDIR?=	/usr/include
+OS!=    uname -s
+.if ${OS} == Linux
+# provided by libbsd-dev on Debian based systems
+INCLUDEDIR+=	/usr/include/bsd
+.endif
 
 #
 # install(1) parameters.
