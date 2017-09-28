@@ -444,7 +444,12 @@ _CPUTYPE!=	MK_AUTO_OBJ=no MAKEFLAGS= CPUTYPE=${_TARGET_CPUTYPE} ${MAKE} \
 .error CPUTYPE global should be set with ?=.
 .endif
 .if make(buildworld)
-BUILD_ARCH!=	uname -p
+UNAME_P!=	uname -p
+.if ${BUILD_ARCH} == x86_64
+BUILD_ARCH=	amd64
+.else
+BUILD_ARCH:=	${UNAME_P}
+.endif
 .if ${MACHINE_ARCH} != ${BUILD_ARCH}
 .error To cross-build, set TARGET_ARCH.
 .endif
