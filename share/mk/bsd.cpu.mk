@@ -8,7 +8,7 @@
 _CPUCFLAGS =
 . if ${MACHINE_CPUARCH} == "aarch64"
 MACHINE_CPU = arm64
-. elif ${MACHINE_CPUARCH} == "amd64"
+. elif ${MACHINE_CPUARCH} == "amd64" || ${MACHINE_CPUARCH} == "x86_64"
 MACHINE_CPU = amd64 sse2 sse mmx
 . elif ${MACHINE_CPUARCH} == "arm"
 MACHINE_CPU = arm
@@ -28,7 +28,7 @@ MACHINE_CPU = ultrasparc
 # Handle aliases (not documented in make.conf to avoid user confusion
 # between e.g. i586 and pentium)
 
-. if ${MACHINE_CPUARCH} == "amd64" || ${MACHINE_CPUARCH} == "i386"
+. if ${MACHINE_CPUARCH} == "amd64" || ${MACHINE_CPUARCH} == "x86_64" || ${MACHINE_CPUARCH} == "i386"
 .  if ${CPUTYPE} == "barcelona"
 CPUTYPE = amdfam10
 .  elif ${CPUTYPE} == "core-avx2"
@@ -46,7 +46,7 @@ CPUTYPE = bonnell
 .  elif ${CPUTYPE} == "core"
 CPUTYPE = prescott
 .  endif
-.  if ${MACHINE_CPUARCH} == "amd64"
+.  if ${MACHINE_CPUARCH} == "amd64" || ${MACHINE_CPUARCH} == "x86_64"
 .   if ${CPUTYPE} == "prescott"
 CPUTYPE = nocona
 .   endif
@@ -101,7 +101,7 @@ _CPUCFLAGS = -march=c3-2
 .  else
 _CPUCFLAGS = -march=${CPUTYPE}
 .  endif
-. elif ${MACHINE_CPUARCH} == "amd64"
+. elif ${MACHINE_CPUARCH} == "amd64" || ${MACHINE_CPUARCH} == "x86_64"
 _CPUCFLAGS = -march=${CPUTYPE}
 . elif ${MACHINE_CPUARCH} == "arm"
 .  if ${CPUTYPE} == "xscale"
@@ -242,7 +242,7 @@ MACHINE_CPU = mmx
 .  endif
 MACHINE_CPU += i486
 ########## amd64
-. elif ${MACHINE_CPUARCH} == "amd64"
+. elif ${MACHINE_CPUARCH} == "amd64" || ${MACHINE_CPUARCH} == "x86_64"
 .  if ${CPUTYPE} == "znver1"
 MACHINE_CPU = avx2 avx sse42 sse41 ssse3 sse4a sse3
 .  elif ${CPUTYPE} == "bdver4"
@@ -392,7 +392,7 @@ CFLAGS += ${_CPUCFLAGS}
 # -mno-sse42
 # (-mfpmath= is not supported)
 #
-.if ${MACHINE_CPUARCH} == "i386" || ${MACHINE_CPUARCH} == "amd64"
+.if ${MACHINE_CPUARCH} == "i386" || ${MACHINE_CPUARCH} == "amd64" || ${MACHINE_CPUARCH} == "x86_64"
 CFLAGS_NO_SIMD.clang= -mno-avx
 CFLAGS_NO_SIMD= -mno-mmx -mno-sse
 .endif

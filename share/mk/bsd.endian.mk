@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 .if ${MACHINE_ARCH} == "aarch64" || \
-    ${MACHINE_ARCH} == "amd64" || \
+    ${MACHINE_ARCH} == "amd64" || ${MACHINE_CPUARCH} == "x86_64" || \
     ${MACHINE_ARCH} == "i386" || \
     (${MACHINE} == "arm" && ${MACHINE_ARCH:Marm*eb*} == "") || \
     ${MACHINE_CPUARCH} == "riscv" || \
