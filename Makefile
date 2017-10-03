@@ -556,11 +556,19 @@ _THINNER=grep 'LINT' || true
 .else
 _THINNER=xargs grep -L "^.NO_UNIVERSE" || true
 .endif
+.if ${OS} == "Linux"
+KERNCONFS!=	cd ${KERNSRCDIR}/${TARGET}/conf && \
+		find . -maxdepth 1 -type f -name '[A-Z0-9]*[A-Z0-9]' \
+		! -name DEFAULTS ! -name NOTES | \
+		sed 's@^\.\/@@' | \
+		${_THINNER}
+.else
 KERNCONFS!=	cd ${KERNSRCDIR}/${TARGET}/conf && \
 		find [[:upper:][:digit:]]*[[:upper:][:digit:]] \
 		-type f -maxdepth 0 \
 		! -name DEFAULTS ! -name NOTES | \
 		${_THINNER}
+.endif
 universe_kernconfs: .PHONY
 .for kernel in ${KERNCONFS}
 TARGET_ARCH_${kernel}!=	cd ${KERNSRCDIR}/${TARGET}/conf && \
