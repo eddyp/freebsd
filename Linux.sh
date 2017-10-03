@@ -21,8 +21,8 @@ export SHELL=/usr/bin/tcsh
 export MAKEOBJDIRPREFIX=${FBSDROOT}/obj
 
 export MTREE=${HOSTBIN}/mtree
-if [ ! -x ${MTREE} ]; then
-	(cd contrib/mtree && ${MAKE} -V PREFIX=$HOSTDIR)
-fi
+#if [ ! -x ${MTREE} ]; then
+#	(cd contrib/mtree && ${MAKE} -V PREFIX=$HOSTDIR)
+#fi
 
 set +x
