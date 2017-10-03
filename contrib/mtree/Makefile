@@ -21,9 +21,9 @@ CPPFLAGS+=	-I${NETBSDSRCDIR}/sbin/mknod
 # cross OS compiling
 HOST_OS!= uname
 .if ${HOST_OS} != FreeBSD
-CFLAGS+=	-I${NETBSDSRCDIR}/contrib/binutils/include
-CFLAGS+=	-I${NETBSDSRCDIR}/lib/libnetbsd
-CFLAGS+=	-I${NETBSDSRCDIR}/sys
+CFLAGS+=	-I${FBSDROOT}/contrib/mtree
+CFLAGS+=	-I${FBSDROOT}/lib/libnetbsd
+CFLAGS+=	-I${FBSDROOT}/sys
 
 # pack_dev.c is not found when cross compiling from a Linux host
 .PATH:		${NETBSDSRCDIR}/contrib/mknod
