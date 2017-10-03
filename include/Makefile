@@ -393,8 +393,18 @@ ${SHARED}: compat
 .if ${MACHINE} == "host" && !defined(_SKIP_BUILD)
 # we're here because we are building a sysroot...
 # we need MACHINE et al set correctly
-HOST_MACHINE!= uname -m
-HOST_MACHINE_ARCH!= uname -p
+UNAME_M!= uname -m
+UNAME_P!= uname -p
+.if ${UNAME_M} == x86_64
+HOST_MACHINE= amd64
+.else
+HOST_MACHINE= ${UNAME_M}
+.endif
+.if ${UNAME_P} == x86_64
+HOST_MACHINE_ARCH= amd64
+.else
+HOST_MACHINE_ARCH= ${UNAME_P}
+.endif
 MACHINE:= ${HOST_MACHINE}
 MACHINE_ARCH:= ${HOST_MACHINE_ARCH}
 .endif
