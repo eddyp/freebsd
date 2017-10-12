@@ -15,7 +15,7 @@ CFLAGS+=	-msoft-float
 .if ${MACHINE_CPUARCH} == "i386"
 CFLAGS.gcc+=	-mpreferred-stack-boundary=2
 .endif
-.if ${MACHINE_CPUARCH} == "amd64" || ${MACHINE_CPUARCH} == "x86_64"
+.if ${MACHINE_CPUARCH} == "amd64"
 CFLAGS+=	-fPIC -mno-red-zone
 .endif
 .if ${MACHINE_CPUARCH} == "aarch64"
