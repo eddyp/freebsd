@@ -21,13 +21,6 @@ INCS=	libutil.h login_cap.h
 
 CFLAGS+= -DLIBC_SCCS
 
-# cross OS compiling
-HOST_OS!= uname
-.if ${HOST_OS} != FreeBSD
-CFLAGS+=	-I${NETBSDSRCDIR}/sys
-.endif
-
-
 .if ${MK_INET6_SUPPORT} != "no"
 CFLAGS+= -DINET6
 .endif
