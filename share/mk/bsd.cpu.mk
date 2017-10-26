@@ -6,6 +6,9 @@
 
 .if !defined(CPUTYPE) || empty(CPUTYPE)
 _CPUCFLAGS =
+.if !defined(MACHINE_CPUARCH) || empty(MACHINE_CPUARCH)
+.error No MACHINE_CPUARCH defined or empty
+.endif
 . if ${MACHINE_CPUARCH} == "aarch64"
 MACHINE_CPU = arm64
 . elif ${MACHINE_CPUARCH} == "amd64"
