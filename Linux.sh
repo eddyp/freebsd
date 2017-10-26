@@ -11,8 +11,8 @@ export MAKE=${HOSTBIN}/bmake
 if [ ! -x $MAKE ]; then
 	(cd contrib/bmake && ./boot-strap --install-prefix=$HOSTDIR --prefix=$HOSTDIR --with-default-sys-path=$FBSDROOT/share/mk -DWITH_PROG_VERSION)
 fi
-MAKEFLAGS="${MAKEFLAGS} -m ${HOSTDIR}/share/mk"
 MAKEFLAGS="${MAKEFLAGS} -m ${FBSDROOT}/share/mk"
+MAKEFLAGS="${MAKEFLAGS} -m ${HOSTDIR}/share/mk"
 #export MAKEFLAGS="${MAKEFLAGS} -dmlxVtMA"
 export MAKEFLAGS
 
